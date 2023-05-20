@@ -1,4 +1,4 @@
-// import ListGroupA from './components/ListGroupA';
+import ListGroupA from './components/ListGroupA';
 import SetAlert from './components/SetAlert';
 import Client from './components/Client';
 import Like from './components/Like';
@@ -15,7 +15,7 @@ function App() {
       <Like onClick={onClick} />
       <Client />
       <SetAlert />
-      {/*<ListGroupA /> */}
+      <ListGroupA />
     </>
   );
 }
