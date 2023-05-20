@@ -1,6 +1,6 @@
 // import ListGroupA from './components/ListGroupA';
 // import SetAlert from './components/SetAlert';
-// import Client from './components/Client';
+import Client from './components/Client';
 import Like from './components/Like';
 
 function onClick() {
@@ -13,8 +13,8 @@ function App() {
   return (
     <>
       <Like onClick={onClick} />
-      {/* <Client />
-      <SetAlert />
+      <Client />
+      {/* <SetAlert />
       <ListGroupA /> */}
     </>
   );
