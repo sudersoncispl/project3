@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 function Popup() {
-  //console.log(showPOp);
   let [showPOp, setShowPop] = useState(false);
   return (
     <>
