@@ -17,7 +17,11 @@ function Popup() {
       </button>
 
       {showPOp == true ? (
-        <div className='modal' tabIndex={1}>
+        <div
+          className='modal'
+          tabIndex={1}
+          style={{ display: 'block', position: 'initial' }}
+        >
           <div className='modal-dialog'>
             <div className='modal-content'>
               <div className='modal-header'>
@@ -41,6 +45,10 @@ function Popup() {
                   type='button'
                   className='btn btn-secondary'
                   data-bs-dismiss='modal'
+                  onClick={() => {
+                    setShowPop(false);
+                    console.log('On false', showPOp);
+                  }}
                 >
                   Close
                 </button>
