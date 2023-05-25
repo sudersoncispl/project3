@@ -1,4 +1,8 @@
+import { useState } from 'react';
+
 function Popup() {
+  let [showPOp, setShowPop] = useState(false);
+
   return (
     <div
       className='modal'
@@ -14,6 +18,9 @@ function Popup() {
               className='btn-close'
               data-bs-dismiss='modal'
               aria-label='Close'
+              onClick={() => {
+                setShowPop(false);
+              }}
             ></button>
           </div>
           <div className='modal-body'>
