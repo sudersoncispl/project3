@@ -1,8 +1,12 @@
+import { useState } from 'react';
+
 function Popup() {
+  let [showPOp, setShowPop] = useState(false);
+
   return (
     <div
       className='modal'
-      style={{ display: 'block', position: 'initial' }}
+      style="{showPOp && { display: 'block', position: 'initial' }}"
       tabIndex={1}
     >
       <div className='modal-dialog'>
@@ -14,6 +18,9 @@ function Popup() {
               className='btn-close'
               data-bs-dismiss='modal'
               aria-label='Close'
+              onClick={() => {
+                setShowPop(false);
+              }}
             ></button>
           </div>
           <div className='modal-body'>
