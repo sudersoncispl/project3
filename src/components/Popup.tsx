@@ -1,21 +1,34 @@
-import { useState } from 'react';
+import { ReactNode } from 'react';
 
-function Popup() {
-  let [showPOp, setShowPop] = useState(false);
+interface props {
+  popState: boolean;
+  title: string;
+  children: ReactNode;
+  action: () => void;
+  closePop: () => void;
+  showPop: () => void;
+}
+function Popup({
+  popState = false,
+  title = 'System Message',
+  children,
+  action,
+  closePop,
+  showPop,
+}: props) {
   return (
     <>
       <button
         type='button'
         className='btn btn-primary'
         onClick={() => {
-          setShowPop(true);
-          console.log('On true', showPOp);
+          showPop();
         }}
       >
-        Primary
+        Open Popup
       </button>
 
-      {showPOp == true ? (
+      {popState == true ? (
         <div
           className='modal'
           tabIndex={1}
@@ -24,35 +37,31 @@ function Popup() {
           <div className='modal-dialog'>
             <div className='modal-content'>
               <div className='modal-header'>
-                <h5 className='modal-title'>Modal title</h5>
+                <h5 className='modal-title'>{title}</h5>
                 <button
                   type='button'
                   className='btn-close'
                   data-bs-dismiss='modal'
                   aria-label='Close'
-                  onClick={() => {
-                    setShowPop(false);
-                    console.log('On false', showPOp);
-                  }}
+                  onClick={closePop}
                 ></button>
               </div>
-              <div className='modal-body'>
-                <p>Modal body text goes here.</p>
-              </div>
+              <div className='modal-body'>{children}</div>
               <div className='modal-footer'>
                 <button
                   type='button'
                   className='btn btn-secondary'
                   data-bs-dismiss='modal'
-                  onClick={() => {
-                    setShowPop(false);
-                    console.log('On false', showPOp);
-                  }}
+                  onClick={closePop}
                 >
                   Close
                 </button>
-                <button type='button' className='btn btn-primary'>
-                  Save changes
+                <button
+                  type='button'
+                  onClick={action}
+                  className='btn btn-primary'
+                >
+                  Yes! Please.
                 </button>
               </div>
             </div>
