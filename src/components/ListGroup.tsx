@@ -4,10 +4,20 @@ interface ListProps {
   name?: string;
   items: string[];
   onSelectItem: (item: string) => void;
+  removeItem: (item: string) => void;
+  addItem: (item: string) => void;
 }
 
-function ListGroup({ name = 'List', items, onSelectItem }: ListProps) {
+function ListGroup({
+  name = 'List',
+  items,
+  onSelectItem,
+  removeItem,
+  addItem,
+}: ListProps) {
   let [active, setActive] = useState(-1);
+  let [countryInput, changeCountryInput] = useState('');
+
   return (
     <>
       <h1>{name}</h1>
@@ -27,10 +37,41 @@ function ListGroup({ name = 'List', items, onSelectItem }: ListProps) {
               }}
             >
               {item}
+
+              <button
+                type='button'
+                className='btn-close'
+                data-bs-dismiss='modal'
+                aria-label='Close'
+                onClick={() => {
+                  removeItem(item);
+                }}
+              ></button>
             </li>
           ))}
         </ul>
       )}
+
+      <div className='input-group mb-3'>
+        <input
+          type='text'
+          placeholder='Country'
+          aria-label='Country'
+          aria-describedby='basic-addon1'
+          value={countryInput}
+          onChange={(event) => changeCountryInput(event.target.value)}
+        />
+        <button
+          type='button'
+          className='btn btn-primary'
+          onClick={() => {
+            addItem(countryInput);
+            changeCountryInput('');
+          }}
+        >
+          Add Country
+        </button>
+      </div>
     </>
   );
 }
