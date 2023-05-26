@@ -14,10 +14,6 @@ function ListGroupA() {
     'Japan',
   ]);
 
-  function onSelectItem(item: string) {
-    console.log(item);
-  }
-
   function removeItem(item: string) {
     setItems(items.filter((val) => val != item));
   }
@@ -30,7 +26,6 @@ function ListGroupA() {
     <ListGroup
       name='Asian Countries'
       items={items}
-      onSelectItem={onSelectItem}
       removeItem={removeItem}
       addItem={addItem}
     />

@@ -3,18 +3,11 @@ import { useState } from 'react';
 interface ListProps {
   name?: string;
   items: string[];
-  onSelectItem: (item: string) => void;
   removeItem: (item: string) => void;
   addItem: (item: string) => void;
 }
 
-function ListGroup({
-  name = 'List',
-  items,
-  onSelectItem,
-  removeItem,
-  addItem,
-}: ListProps) {
+function ListGroup({ name = 'List', items, removeItem, addItem }: ListProps) {
   let [active, setActive] = useState(-1);
   let [countryInput, changeCountryInput] = useState('');
 
@@ -33,7 +26,7 @@ function ListGroup({
               }
               key={index}
               onClick={() => {
-                setActive(index), onSelectItem(item);
+                setActive(index);
               }}
             >
               {item}
